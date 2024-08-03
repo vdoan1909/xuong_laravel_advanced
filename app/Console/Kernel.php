@@ -17,12 +17,12 @@ class Kernel extends ConsoleKernel
         // cai nay` em test xem chay dc khong
         // $schedule->command('app:send-daily-report')->everyMinute(); 
 
-        $schedule->command('app:send-weekly-email')->weeklyOn(1, '9:00');
+        $schedule->command('app:send-weekly-email')->weeklyOn(1, '9:00')->withoutOverlapping();
 
         // cai nay` em test xem chay dc khong 
         // $schedule->command('app:send-weekly-email')->everyMinute();
 
-        $schedule->command('app:send-bulk-emails')->weeklyOn(1, '10:00');
+        $schedule->command('app:send-bulk-emails')->weeklyOn(1, '10:00')->withoutOverlapping();
     }
 
     protected function commands(): void
