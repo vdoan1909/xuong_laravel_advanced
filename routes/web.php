@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BTVN3Controller;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\RateController;
@@ -46,3 +47,22 @@ Route::get('rate', [RateController::class, "index"]);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix("btvn3")
+    ->as("btvn3.")
+    ->group(function () {
+        // Bai 1:
+        Route::get('command-basic', [BTVN3Controller::class, "commandBasic"]);
+        // Bai 2:
+        Route::get("list-users", [BTVN3Controller::class, "ListUsers"]);
+        // Bai 3:
+        Route::get("clear-old-logs", [BTVN3Controller::class, "clearOldLogs"]);
+        // Bai 4:
+        Route::get("send-daily-report", [BTVN3Controller::class, "sendDailyReport"]);
+        // Bai 5:
+        Route::get("send-weekly-email", [BTVN3Controller::class, "sendWeeklyEmail"]);
+        
+        // Bai tap ung dung queue job
+        Route::get("send-bulk-email", [BTVN3Controller::class, "sendBulkEmail"]);
+        
+    });
